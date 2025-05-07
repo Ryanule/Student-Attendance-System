@@ -26,6 +26,7 @@ namespace Student_Attendance_System
             this.BackgroundImageLayout = ImageLayout.Stretch;
             // 设置窗体为可缩放
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.BackgroundImage = Properties.Resources.background1;
         }
         private void InitializeComponents()
         {

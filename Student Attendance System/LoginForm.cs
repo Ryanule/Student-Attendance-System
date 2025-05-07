@@ -14,14 +14,14 @@ namespace Student_Attendance_System
 {
     public partial class LoginForm: Form
     {
-        private string connectionString = "Data Source=CHINAMI-0UB312L;Initial Catalog=StudentAttendanceDB;Integrated Security=True;";
+        private string connectionString;
         public LoginForm()
         {
             InitializeComponent();
             this.BackgroundImageLayout = ImageLayout.Stretch;
             // 设置窗体为可缩放
             this.FormBorderStyle = FormBorderStyle.Sizable;
-
+            connectionString = MainForm.connectionString;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -31,25 +31,38 @@ namespace Student_Attendance_System
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                string query = "SELECT Role FROM Users WHERE Username = @Username AND Password = @Password";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", username);
+                command.Parameters.AddWithValue("@Password", password);
+
                 try
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
-                    int count = (int)command.ExecuteScalar();
-
-                    if (count > 0)
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
                     {
-                        MainForm mainForm = new MainForm();
-                        mainForm.Show();
-                        this.Hide();
+                        string role = reader["Role"].ToString();
+                        if (role == "Admin")
+                        {
+                            // 管理员权限
+                            MainForm mainForm = new MainForm();
+                            mainForm.Show();
+                            this.Hide();
+                        }
+                        else if (role == "Student")
+                        {
+                            // 学生权限
+                            StudentQueryForm studentQueryForm = new StudentQueryForm(username);
+                            studentQueryForm.Show();
+                            this.Hide();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("用户名或密码错误！");
+                        MessageBox.Show("用户名或密码错误，请重新输入！");
                     }
+                    reader.Close();
                 }
                 catch (Exception ex)
                 {

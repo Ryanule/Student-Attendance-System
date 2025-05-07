@@ -1,6 +1,6 @@
 ﻿namespace Student_Attendance_System
 {
-    partial class SystemSettingsForm
+    partial class StudentQueryForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // SystemSettingsForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Student_Attendance_System.Properties.Resources.background1;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.DoubleBuffered = true;
-            this.Name = "SystemSettingsForm";
-            this.Text = "SystemSettingsForm";
-            this.ResumeLayout(false);
-
+            this.Text = "studentQueryForm";
         }
 
         #endregion

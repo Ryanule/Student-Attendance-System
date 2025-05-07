@@ -13,6 +13,8 @@ namespace Student_Attendance_System
     public partial class MainForm: Form
     {
         public static string connectionString = "Data Source=CHINAMI-0UB312L;Initial Catalog=StudentAttendanceDB;Integrated Security=True;";
+        // 添加静态属性来存储当前用户名
+        public static string CurrentUsername { get; set; }
         public MainForm()
         {
             InitializeComponent();
@@ -53,6 +55,7 @@ namespace Student_Attendance_System
 
         private void button5_Click(object sender, EventArgs e)
         {
+             // 只有管理员权限才能访问用户管理功能
             List<Form> formsToControl = new List<Form>
             {
                 this, // 主窗体
@@ -61,8 +64,8 @@ namespace Student_Attendance_System
                 new QueryStatisticsForm(),
                 new DataMaintenanceForm()
             };
-            SystemSettingsForm settingsForm = new SystemSettingsForm(formsToControl);
-            settingsForm.Show();
+            UserManagementForm userManagementForm = new UserManagementForm(formsToControl);
+            userManagementForm.Show();
         }
     }
 

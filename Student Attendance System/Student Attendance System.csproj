@@ -146,11 +146,17 @@
     <Compile Include="StudentManagementForm.Designer.cs">
       <DependentUpon>StudentManagementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemSettingsForm.cs">
+    <Compile Include="StudentQueryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SystemSettingsForm.Designer.cs">
-      <DependentUpon>SystemSettingsForm.cs</DependentUpon>
+    <Compile Include="StudentQueryForm.Designer.cs">
+      <DependentUpon>StudentQueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagementForm.Designer.cs">
+      <DependentUpon>UserManagementForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddAttendanceForm.resx">
       <DependentUpon>AddAttendanceForm.cs</DependentUpon>
@@ -186,9 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentManagementForm.resx">
       <DependentUpon>StudentManagementForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SystemSettingsForm.resx">
-      <DependentUpon>SystemSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
