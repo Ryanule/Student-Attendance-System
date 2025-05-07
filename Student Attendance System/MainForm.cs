@@ -53,7 +53,16 @@ namespace Student_Attendance_System
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new SystemSettingsForm().Show();
+            List<Form> formsToControl = new List<Form>
+            {
+                this, // 主窗体
+                new StudentManagementForm(),
+                new AttendanceManagementForm(),
+                new QueryStatisticsForm(),
+                new DataMaintenanceForm()
+            };
+            SystemSettingsForm settingsForm = new SystemSettingsForm(formsToControl);
+            settingsForm.Show();
         }
     }
 
